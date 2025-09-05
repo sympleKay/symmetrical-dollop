@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Overview</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      color: #333;
+      margin: 20px;
+      padding: 20px;
+    }
+    h1 {
+      color: #007bff;
+    }
+    h2 {
+      color: #0056b3;
+    }
+    ul {
+      margin-left: 20px;
+    }
+    .section {
+      background-color: #fff;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    #gameResult {
+      font-weight: bold;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>JavaScript Introduction</h1>
+
+  <div class="section">
+    <h2>1. History of JavaScript</h2>
+    <p>JavaScript was created in 1995 by Brendan Eich while working at Netscape. Originally called "Mocha", it was later renamed to "LiveScript" and finally "JavaScript". It was developed in just 10 days and has become one of the core technologies of the web, alongside HTML and CSS.</p>
+  </div>
+
+  <div class="section">
+    <h2>2. List of JavaScript Languages</h2>
+    <p>JavaScript is a language itself, but it has several dialects and supersets:</p>
+    <ul>
+      <li>Vanilla JavaScript (plain JavaScript)</li>
+      <li>ECMAScript (official standard)</li>
+      <li>TypeScript (a superset of JavaScript)</li>
+      <li>CoffeeScript</li>
+      <li>JScript (Microsoft's version)</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>3. Meaning of Variable and Its Role in JavaScript</h2>
+    <p>A <strong>variable</strong> in JavaScript is a container for storing data values. Variables are used to store information that can be referenced and manipulated in a program. They allow developers to write dynamic and flexible code.</p>
+    <p>Example: <code>let age = 25;</code></p>
+    <p>Here, <code>age</code> is a variable holding the value <code>25</code>.</p>
+  </div>
+
+  <div class="section">
+    <h2>4. JavaScript Guessing Game</h2>
+    <p>Guess a number between 1 and 10:</p>
+    <input type="number" id="userGuess" min="1" max="10">
+    <button onclick="checkGuess()">Guess</button>
+    <p id="gameResult"></p>
+
+    <script>
+      const secretNumber = Math.floor(Math.random() * 10) + 1;
+
+      function checkGuess() {
+        const userGuess = parseInt(document.getElementById("userGuess").value);
+        const result = document.getElementById("gameResult");
+
+        if (userGuess === secretNumber) {
+          result.textContent = "Correct! You guessed the number!";
+          result.style.color = "green";
+        } else {
+          result.textContent = "Wrong guess. Try again!";
+          result.style.color = "red";
+        }
+      }
+    </script>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Development Class - PGD 2024/2025</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary-color: #3b82f6;
+        --secondary-color: #8b5cf6;
+        --accent-color: #06b6d4;
+        --success-color: #10b981;
+        --warning-color: #f59e0b;
+        --dark-color: #1f2937;
+        --gray-50: #f9fafb;
+        --gray-100: #f3f4f6;
+        --gray-200: #e5e7eb;
+        --gray-600: #4b5563;
+        --gray-800: #1f2937;
+        --gray-900: #111827;
+        --white: #ffffff;
+        --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+        --border-radius: 0.75rem;
+        --transition: all 0.3s ease;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: var(--gray-800);
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+      }
+
+      /* Navigation */
+      .navbar {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: var(--border-radius);
+        padding: 1rem 2rem;
+        margin-bottom: 2rem;
+        box-shadow: var(--shadow-lg);
+        position: sticky;
+        top: 1rem;
+        z-index: 100;
+      }
+
+      .nav-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .nav-brand {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        text-decoration: none;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+        flex-wrap: wrap;
+      }
+
+      .nav-links a {
+        color: var(--gray-600);
+        text-decoration: none;
+        font-weight: 500;
+        transition: var(--transition);
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+      }
+
+      .nav-links a:hover {
+        background: var(--primary-color);
+        color: white;
+      }
+
+      /* Sections */
+      .section {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: var(--border-radius);
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: var(--shadow-lg);
+        scroll-margin-top: 2rem;
+      }
+
+      .section h2 {
+        color: var(--primary-color);
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        border-bottom: 3px solid var(--primary-color);
+        padding-bottom: 0.5rem;
+      }
+
+      .section h3 {
+        color: var(--gray-800);
+        font-size: 1.3rem;
+        margin: 1.5rem 0 1rem 0;
+      }
+
+      .section p {
+        margin-bottom: 1rem;
+        text-align: justify;
+      }
+
+      .section ul {
+        margin: 1rem 0 1rem 2rem;
+      }
+
+      .section li {
+        margin-bottom: 0.5rem;
+      }
+
+      /* Students Grid */
+      .students-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-top: 2rem;
+      }
+
+      .student-card {
+        background: white;
+        border-radius: var(--border-radius);
+        padding: 1.5rem;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: var(--transition);
+        border: 2px solid transparent;
+      }
+
+      .student-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--primary-color);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .student-avatar {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        margin: 0 auto 1rem;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color),
+          var(--secondary-color)
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.5rem;
+        font-weight: 700;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .student-photo {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+
+      .avatar-fallback {
+        display: none;
+        color: white;
+        font-size: 1.5rem;
+        font-weight: 700;
+      }
+
+      .student-name {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--gray-800);
+        margin-bottom: 0.5rem;
+      }
+
+      .student-id {
+        color: var(--gray-600);
+        font-size: 0.9rem;
+      }
+
+      /* Comparison Table */
+      .comparison-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1.5rem 0;
+        background: white;
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .comparison-table th,
+      .comparison-table td {
+        padding: 1rem;
+        text-align: left;
+        border-bottom: 1px solid var(--gray-200);
+      }
+
+      .comparison-table th {
+        background: var(--primary-color);
+        color: white;
+        font-weight: 600;
+      }
+
+      .comparison-table tr:hover {
+        background: var(--gray-50);
+      }
+
+      /* Timeline */
+      .timeline {
+        position: relative;
+        margin: 2rem 0;
+      }
+
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 2rem;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background: var(--primary-color);
+      }
+
+      .timeline-item {
+        position: relative;
+        margin-bottom: 2rem;
+        margin-left: 4rem;
+        background: white;
+        padding: 1.5rem;
+        border-radius: var(--border-radius);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: -3.5rem;
+        top: 1.5rem;
+        width: 15px;
+        height: 15px;
+        background: var(--primary-color);
+        border-radius: 50%;
+        border: 3px solid white;
+      }
+
+      .timeline-year {
+        font-weight: 700;
+        color: var(--primary-color);
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+      }
+
+      /* Game Section */
+      .game-container {
+        background: white;
+        border-radius: var(--border-radius);
+        padding: 2rem;
+        margin-top: 2rem;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .game-input {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        align-items: center;
+        margin: 1.5rem 0;
+        flex-wrap: wrap;
+      }
+
+      .game-input input {
+        padding: 0.75rem;
+        border: 2px solid var(--gray-200);
+        border-radius: 0.5rem;
+        font-size: 1rem;
+        width: 100px;
+        text-align: center;
+      }
+
+      .game-input input:focus {
+        outline: none;
+        border-color: var(--primary-color);
+      }
+
+      .btn {
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: 600;
+        transition: var(--transition);
+      }
+
+      .btn:hover {
+        background: var(--secondary-color);
+        transform: translateY(-2px);
+      }
+
+      .game-result {
+        margin-top: 1rem;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        font-weight: 600;
+      }
+
+      .success {
+        background: #d1fae5;
+        color: #065f46;
+      }
+
+      .error {
+        background: #fee2e2;
+        color: #991b1b;
+      }
+
+      .info {
+        background: #dbeafe;
+        color: #1e40af;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .nav-content {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .nav-links {
+          justify-content: center;
+        }
+
+        .students-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .comparison-table {
+          font-size: 0.9rem;
+        }
+
+        .timeline {
+          margin-left: 1rem;
+        }
+
+        .timeline::before {
+          left: 1rem;
+        }
+
+        .timeline-item {
+          margin-left: 2.5rem;
+        }
+
+        .timeline-item::before {
+          left: -2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Navigation -->
+      <nav class="navbar">
+        <div class="nav-content">
+          <a href="#students" class="nav-brand">Web Development Class</a>
+          <ul class="nav-links">
+            <li><a href="#students">Students</a></li>
+            <li><a href="#internet-web">Internet vs Web</a></li>
+            <li><a href="#internet-history">Internet History</a></li>
+            <li><a href="#html-history">HTML History</a></li>
+            <li><a href="#css-styling">CSS Styling</a></li>
+            <li><a href="#js-history">JavaScript History</a></li>
+            <li><a href="#number-game">Number Game</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- 1. Students Section -->
+      <section id="students" class="section">
+        <h2><i class="fas fa-users"></i> Web Development Class Students</h2>
+        <p>
+          Meet the talented students of our Post Graduate Diploma (PGD) Web
+          Development class for the academic session 2024/2025 at Redeemer's
+          University.
+        </p>
+
+        <div class="students-grid">
+          <div class="student-card">
+            <div class="student-avatar">
+              <img
+                src="/images/students/kayode.jpg"
+                alt="Oluwakayode Fafiyebi"
+                class="student-photo"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              />
+              <span class="avatar-fallback">OF</span>
+            </div>
+            <div class="student-name">Oluwakayode Fafiyebi</div>
+            <div class="student-id">RUN/CMP/24/18200</div>
+          </div>
+
+          <div class="student-card">
+            <div class="student-avatar">
+              <img
+                src="/images/students/Temitope.jpg"
+                alt="Temitope Adebayo"
+                class="student-photo"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              />
+              <span class="avatar-fallback">TA</span>
+            </div>
+            <div class="student-name">Temitope Adebayo</div>
+            <div class="student-id">RUN/CMP/24/17876</div>
+          </div>
+
+          <div class="student-card">
+            <div class="student-avatar">
+              <img
+                src="/images/students/Taiye.jpg"
+                alt="Taiye Williams"
+                class="student-photo"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              />
+              <span class="avatar-fallback">TW</span>
+            </div>
+            <div class="student-name">Taiye Williams</div>
+            <div class="student-id">RUN/CMP/24/17876</div>
+          </div>
+
+          <div class="student-card">
+            <div class="student-avatar">
+              <img
+                src="/images/students/kehinde.jpg"
+                alt="Temitope Adebayo"
+                class="student-photo"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              />
+              <span class="avatar-fallback">KW</span>
+            </div>
+            <div class="student-name">Kehinde Williams</div>
+            <div class="student-id">RUN/CMP/24/17876</div>
+          </div>
+
+          <div class="student-card">
+            <div class="student-avatar">
+              <img
+                src="/images/students/Aishat.jpg"
+                alt="Temitope Adebayo"
+                class="student-photo"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              />
+              <span class="avatar-fallback">AA</span>
+            </div>
+            <div class="student-name">Aishat Akingbade</div>
+            <div class="student-id">RUN/CMP/24/17876</div>
+          </div>
+
+          <div class="student-card">
+            <div class="student-avatar">
+              <img
+                src="/images/students/Tayo.jpg"
+                alt="Oluwatemitayo Aladejebi"
+                class="student-photo"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              />
+              <span class="avatar-fallback">TA</span>
+            </div>
+            <div class="student-name">Oluwatemitayo Aladejebi</div>
+            <div class="student-id">RUN/CMP/24/17876</div>
+          </div>
+
+          <div class="student-card">
+            <div class="student-avatar">
+              <img
+                src="/images/students/caleb.jpg"
+                alt="Caleb"
+                class="student-photo"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              />
+              <span class="avatar-fallback">C</span>
+            </div>
+            <div class="student-name">Caleb</div>
+            <div class="student-id">RUN/CMP/24/17876</div>
+          </div>
+
+          <div class="student-card">
+            <div class="student-avatar">
+              <img
+                src="/images/students/ife.png"
+                alt="Ifeoluwa Tijesuni"
+                class="student-photo"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              />
+              <span class="avatar-fallback">IT</span>
+            </div>
+            <div class="student-name">Ifeoluwa Tijesuni</div>
+            <div class="student-id">RUN/CMP/24/17876</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Internet vs Web -->
+      <section id="internet-web" class="section">
+        <h2><i class="fas fa-globe"></i> Internet vs World Wide Web</h2>
+        <p>
+          Understanding the distinction between the Internet and the World Wide
+          Web is fundamental to web development. While often used
+          interchangeably, they are distinctly different concepts.
+        </p>
+
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Aspect</th>
+              <th>Internet</th>
+              <th>World Wide Web (WWW)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Definition</strong></td>
+              <td>A global network of interconnected computers and servers</td>
+              <td>
+                A system of interlinked hypertext documents accessed via the
+                Internet
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Nature</strong></td>
+              <td>
+                Physical infrastructure (hardware and networking protocols)
+              </td>
+              <td>Software application that runs on the Internet</td>
+            </tr>
+            <tr>
+              <td><strong>Invention</strong></td>
+              <td>1960s (ARPANET)</td>
+              <td>1989-1991 (Tim Berners-Lee)</td>
+            </tr>
+            <tr>
+              <td><strong>Protocol</strong></td>
+              <td>TCP/IP (Transmission Control Protocol/Internet Protocol)</td>
+              <td>HTTP/HTTPS (HyperText Transfer Protocol)</td>
+            </tr>
+            <tr>
+              <td><strong>Services</strong></td>
+              <td>Email, FTP, VoIP, Gaming, Web, etc.</td>
+              <td>Websites, web pages, web applications</td>
+            </tr>
+            <tr>
+              <td><strong>Access Method</strong></td>
+              <td>Various applications and protocols</td>
+              <td>Web browsers (Chrome, Firefox, Safari, etc.)</td>
+            </tr>
+            <tr>
+              <td><strong>Scope</strong></td>
+              <td>Global network infrastructure</td>
+              <td>Subset of Internet services</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Key Points:</h3>
+        <ul>
+          <li>
+            <strong>Internet</strong> is the foundation - the massive network of
+            networks that connects computers worldwide
+          </li>
+          <li>
+            <strong>World Wide Web</strong> is one of many services that runs on
+            top of the Internet
+          </li>
+          <li>
+            You can use the Internet without the Web (email, file transfer,
+            gaming)
+          </li>
+          <li>You cannot use the Web without the Internet</li>
+          <li>The Web uses URLs, HTML, and HTTP to function</li>
+        </ul>
+      </section>
+
+      <!-- 3. History of Internet -->
+      <section id="internet-history" class="section">
+        <h2><i class="fas fa-history"></i> History of the Internet</h2>
+        <p>
+          The Internet's development spans several decades, evolving from a
+          military research project to the global communication backbone we know
+          today.
+        </p>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-year">1962</div>
+            <p>
+              <strong>Concept Birth:</strong> J.C.R. Licklider of MIT and ARPA
+              proposed the concept of a "Galactic Network" of interconnected
+              computers.
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-year">1969</div>
+            <p>
+              <strong>ARPANET:</strong> First message sent between UCLA and
+              Stanford Research Institute. Four nodes connected: UCLA, Stanford,
+              UCSB, and University of Utah.
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-year">1971</div>
+            <p>
+              <strong>Email:</strong> Ray Tomlinson sent the first network email
+              and introduced the @ symbol for email addresses.
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-year">1973</div>
+            <p>
+              <strong>TCP/IP Development:</strong> Vint Cerf and Bob Kahn began
+              developing TCP/IP protocol suite, the foundation of modern
+              Internet.
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-year">1983</div>
+            <p>
+              <strong>Internet Protocol:</strong> ARPANET adopted TCP/IP,
+              creating the technical foundation for the modern Internet.
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-year">1989</div>
+            <p>
+              <strong>Commercial Internet:</strong> First commercial ISPs
+              appeared. The Internet began its transition from academic to
+              commercial use.
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-year">1991</div>
+            <p>
+              <strong>World Wide Web:</strong> Tim Berners-Lee created the first
+              website and web browser at CERN, making the Internet accessible to
+              the general public.
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-year">1993</div>
+            <p>
+              <strong>Mosaic Browser:</strong> First popular web browser with
+              graphics capability, leading to explosive Internet growth.
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-year">2000s</div>
+            <p>
+              <strong>Broadband Era:</strong> High-speed Internet became widely
+              available, enabling multimedia content and modern web
+              applications.
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-year">2010s-Present</div>
+            <p>
+              <strong>Mobile Internet:</strong> Smartphones and mobile devices
+              became the primary Internet access method for billions of users
+              worldwide.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. History of HTML -->
+      <section id="html-history" class="section">
+        <h2><i class="fas fa-code"></i> History of HTML</h2>
+        <p>
+          HyperText Markup Language (HTML) is the foundation of web content,
+          evolving significantly since its creation to support modern web
+          applications.
+        </p>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-year">1989</div>
+            <p>
+              <strong>Concept:</strong> Tim Berners-Lee proposed HTML as part of
+              his World Wide Web project at CERN.
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-year">1991</div>
+            <p>
+              <strong>HTML 1.0:</strong> First version with 22 basic tags
+              including &lt;title&gt;, &lt;h1&gt;-&lt;h6&gt;, &lt;p&gt;,
+              &lt;a&gt;, and &lt;img&gt;.
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-year">1995</div>
+            <p>
+              <strong>HTML 2.0:</strong> First standardized version by IETF,
+              introducing forms, tables, and more structured elements.
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-year">1997</div>
+            <p>
+              <strong>HTML 3.2:</strong> W3C standardization, added support for
+              tables, applets, and text flow around images.
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-year">1999</div>
+            <p>
+              <strong>HTML 4.01:</strong> Major revision introducing CSS
+              support, scripting, accessibility features, and
+              internationalization.
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-year">2000</div>
+            <p>
+              <strong>XHTML 1.0:</strong> XML-based version of HTML with
+              stricter syntax rules and better structure.
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-year">2014</div>
+            <p>
+              <strong>HTML5:</strong> Modern standard with semantic elements,
+              multimedia support, APIs, and enhanced forms.
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-year">2021-Present</div>
+            <p>
+              <strong>Living Standard:</strong> HTML is now a "living standard"
+              continuously updated by WHATWG.
+            </p>
+          </div>
+        </div>
+
+        <h3>Key HTML5 Features:</h3>
+        <ul>
+          <li>
+            Semantic elements: &lt;header&gt;, &lt;nav&gt;, &lt;main&gt;,
+            &lt;article&gt;, &lt;section&gt;, &lt;footer&gt;
+          </li>
+          <li>Multimedia: &lt;video&gt;, &lt;audio&gt;, &lt;canvas&gt;</li>
+          <li>Enhanced forms: new input types, validation</li>
+          <li>APIs: Geolocation, Local Storage, Web Workers</li>
+          <li>Improved accessibility and mobile support</li>
+        </ul>
+      </section>
+
+      <!-- 5. CSS Styling -->
+      <section id="css-styling" class="section">
+        <h2><i class="fas fa-paint-brush"></i> CSS Styling in HTML</h2>
+        <p>
+          Cascading Style Sheets (CSS) control the presentation and layout of
+          HTML documents, separating content from design.
+        </p>
+
+        <h3>What is CSS?</h3>
+        <p>
+          CSS is a stylesheet language used to describe the presentation of HTML
+          documents. It controls layout, colors, fonts, spacing, and visual
+          effects.
+        </p>
+
+        <h3>Ways to Include CSS in HTML:</h3>
+
+        <h4>1. Inline CSS</h4>
+        <p>Applied directly to HTML elements using the style attribute:</p>
+        <pre
+          style="
+            background: #f4f4f4;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+          "
+        >
+&lt;p style="color: blue; font-size: 18px;"&gt;This is inline CSS&lt;/p&gt;</pre
+        >
+
+        <h4>2. Internal CSS</h4>
+        <p>Defined within the &lt;style&gt; tag in the HTML document head:</p>
+        <pre
+          style="
+            background: #f4f4f4;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+          "
+        >
+&lt;head&gt;
+    &lt;style&gt;
+        p {
+            color: blue;
+            font-size: 18px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;</pre
+        >
+
+        <h4>3. External CSS</h4>
+        <p>Separate CSS file linked to HTML document:</p>
+        <pre
+          style="
+            background: #f4f4f4;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+          "
+        >
+&lt;head&gt;
+    &lt;link rel="stylesheet" href="styles.css"&gt;
+&lt;/head&gt;</pre
+        >
+
+        <h3>CSS Selectors:</h3>
+        <ul>
+          <li><strong>Element:</strong> p { color: red; }</li>
+          <li><strong>Class:</strong> .className { color: blue; }</li>
+          <li><strong>ID:</strong> #idName { color: green; }</li>
+          <li>
+            <strong>Attribute:</strong> [type="text"] { border: 1px solid gray;
+            }
+          </li>
+          <li><strong>Pseudo-classes:</strong> a:hover { color: orange; }</li>
+        </ul>
+
+        <h3>CSS Box Model:</h3>
+        <p>Every HTML element is treated as a rectangular box with:</p>
+        <ul>
+          <li><strong>Content:</strong> The actual content of the element</li>
+          <li><strong>Padding:</strong> Space between content and border</li>
+          <li><strong>Border:</strong> Border around the padding</li>
+          <li><strong>Margin:</strong> Space outside the border</li>
+        </ul>
+
+        <h3>Modern CSS Features:</h3>
+        <ul>
+          <li><strong>Flexbox:</strong> One-dimensional layout method</li>
+          <li><strong>Grid:</strong> Two-dimensional layout system</li>
+          <li>
+            <strong>Responsive Design:</strong> Media queries for different
+            devices
+          </li>
+          <li>
+            <strong>Animations:</strong> CSS transitions and keyframe animations
+          </li>
+          <li>
+            <strong>Custom Properties:</strong> CSS variables for reusable
+            values
+          </li>
+        </ul>
+      </section>
+
+      <!-- 6. JavaScript History -->
+      <section id="js-history" class="section">
+        <h2><i class="fas fa-laptop-code"></i> History of JavaScript</h2>
+        <p>
+          JavaScript has evolved from a simple scripting language to the
+          backbone of modern web development and beyond.
+        </p>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-year">1995</div>
+            <p>
+              <strong>Birth:</strong> Brendan Eich created JavaScript at
+              Netscape in just 10 days. Originally called "LiveScript," then
+              "JavaScript."
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-year">1996</div>
+            <p>
+              <strong>Standardization:</strong> Netscape submitted JavaScript to
+              ECMA International for standardization.
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-year">1997</div>
+            <p>
+              <strong>ECMAScript 1:</strong> First standardized version of
+              JavaScript (ECMA-262).
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-year">1999</div>
+            <p>
+              <strong>ECMAScript 3:</strong> Added regular expressions,
+              try/catch, and better string handling. Became widely adopted.
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-year">2005</div>
+            <p>
+              <strong>AJAX Revolution:</strong> Asynchronous JavaScript and XML
+              enabled dynamic web applications without page reloads.
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-year">2009</div>
+            <p>
+              <strong>ECMAScript 5:</strong> Added strict mode, JSON support,
+              array methods, and property getters/setters.
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-year">2009</div>
+            <p>
+              <strong>Node.js:</strong> Ryan Dahl created Node.js, bringing
+              JavaScript to server-side development.
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-year">2015</div>
+            <p>
+              <strong>ECMAScript 6 (ES2015):</strong> Major update with classes,
+              modules, arrow functions, promises, and template literals.
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-year">2015-Present</div>
+            <p>
+              <strong>Modern JavaScript:</strong> Annual releases with
+              continuous improvements. JavaScript now powers web, mobile,
+              desktop, and server applications.
+            </p>
+          </div>
+        </div>
+
+        <h3>JavaScript Today:</h3>
+        <ul>
+          <li><strong>Frontend:</strong> React, Vue, Angular frameworks</li>
+          <li><strong>Backend:</strong> Node.js, Express.js</li>
+          <li><strong>Mobile:</strong> React Native, Ionic</li>
+          <li><strong>Desktop:</strong> Electron applications</li>
+          <li><strong>AI/ML:</strong> TensorFlow.js</li>
+        </ul>
+      </section>
+
+      <!-- 7. Number Guessing Game -->
+      <section id="number-game" class="section">
+        <h2><i class="fas fa-gamepad"></i> Number Guessing Game</h2>
+        <p>
+          Test your luck with this JavaScript-powered number guessing game! Try
+          to guess 5 numbers between 0 and 20.
+        </p>
+
+        <div class="game-container">
+          <h3>Guess 5 Numbers (0-20)</h3>
+          <p>Enter your 5 guesses and see how many you got right!</p>
+
+          <div class="game-input">
+            <input
+              type="number"
+              id="guess1"
+              min="0"
+              max="20"
+              placeholder="1st"
+            />
+            <input
+              type="number"
+              id="guess2"
+              min="0"
+              max="20"
+              placeholder="2nd"
+            />
+            <input
+              type="number"
+              id="guess3"
+              min="0"
+              max="20"
+              placeholder="3rd"
+            />
+            <input
+              type="number"
+              id="guess4"
+              min="0"
+              max="20"
+              placeholder="4th"
+            />
+            <input
+              type="number"
+              id="guess5"
+              min="0"
+              max="20"
+              placeholder="5th"
+            />
+            <button class="btn" onclick="playGame()">Check Guesses</button>
+          </div>
+
+          <div id="gameResult" class="game-result" style="display: none"></div>
+          <div id="gameNumbers" style="margin-top: 1rem; display: none"></div>
+
+          <button
+            class="btn"
+            onclick="resetGame()"
+            style="margin-top: 1rem; background: var(--gray-600)"
+          >
+            Play Again
+          </button>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer
+        class="section"
+        style="text-align: center; background: var(--gray-800); color: white"
+      >
+        <h3>Web Development Class Assignment</h3>
+        <p>Post Graduate Diploma (PGD) - Redeemer's University</p>
+        <p>Academic Session 2024/2025</p>
+      </footer>
+    </div>
+
+    <script>
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+
+      // Number Guessing Game
+      let secretNumbers = [];
+      let gameStarted = false;
+
+      function generateSecretNumbers() {
+        secretNumbers = [];
+        for (let i = 0; i < 5; i++) {
+          secretNumbers.push(Math.floor(Math.random() * 21)); // 0-20
+        }
+      }
+
+      function playGame() {
+        // Generate secret numbers if not already done
+        if (!gameStarted) {
+          generateSecretNumbers();
+          gameStarted = true;
+        }
+
+        // Get user guesses
+        const guesses = [];
+        for (let i = 1; i <= 5; i++) {
+          const guess = parseInt(document.getElementById(`guess${i}`).value);
+          if (isNaN(guess) || guess < 0 || guess > 20) {
+            alert(
+              `Please enter a valid number between 0 and 20 for guess ${i}`
+            );
+            return;
+          }
+          guesses.push(guess);
+        }
+
+        // Check for duplicates
+        const uniqueGuesses = [...new Set(guesses)];
+        if (uniqueGuesses.length !== guesses.length) {
+          alert("Please enter 5 different numbers!");
+          return;
+        }
+
+        // Compare guesses with secret numbers
+        let correctGuesses = 0;
+        const results = [];
+
+        for (let i = 0; i < 5; i++) {
+          if (secretNumbers.includes(guesses[i])) {
+            correctGuesses++;
+            results.push(`✓ ${guesses[i]} (Correct!)`);
+          } else {
+            results.push(`✗ ${guesses[i]} (Wrong)`);
+          }
+        }
+
+        // Display results
+        const resultDiv = document.getElementById("gameResult");
+        const numbersDiv = document.getElementById("gameNumbers");
+
+        resultDiv.style.display = "block";
+        numbersDiv.style.display = "block";
+
+        if (correctGuesses === 5) {
+          resultDiv.className = "game-result success";
+          resultDiv.innerHTML = `🎉 AMAZING! You got all 5 numbers correct! You're a number guessing champion!`;
+        } else if (correctGuesses >= 3) {
+          resultDiv.className = "game-result success";
+          resultDiv.innerHTML = `🎉 Great job! You got ${correctGuesses} out of 5 numbers correct!`;
+        } else if (correctGuesses >= 1) {
+          resultDiv.className = "game-result info";
+          resultDiv.innerHTML = `👍 Not bad! You got ${correctGuesses} out of 5 numbers correct!`;
+        } else {
+          resultDiv.className = "game-result error";
+          resultDiv.innerHTML = `😅 Oops! You got 0 out of 5 numbers correct. Better luck next time!`;
+        }
+
+        // Show the secret numbers and user results
+        numbersDiv.innerHTML = `
+                <div style="background: white; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
+                    <strong>Secret Numbers:</strong> ${secretNumbers.join(
+                      ", "
+                    )}<br>
+                    <strong>Your Guesses:</strong><br>
+                    ${results.join("<br>")}
+                </div>
+            `;
+
+        // Disable inputs
+        for (let i = 1; i <= 5; i++) {
+          document.getElementById(`guess${i}`).disabled = true;
+        }
+      }
+
+      function resetGame() {
+        // Reset game state
+        gameStarted = false;
+        secretNumbers = [];
+
+        // Clear and enable inputs
+        for (let i = 1; i <= 5; i++) {
+          const input = document.getElementById(`guess${i}`);
+          input.value = "";
+          input.disabled = false;
+        }
+
+        // Hide results
+        document.getElementById("gameResult").style.display = "none";
+        document.getElementById("gameNumbers").style.display = "none";
+      }
+
+      // Initialize the page
+      document.addEventListener("DOMContentLoaded", function () {
+        console.log("Web Development Class Assignment Loaded Successfully!");
+
+        // Add some interactive effects
+        const studentCards = document.querySelectorAll(".student-card");
+        studentCards.forEach((card) => {
+          card.addEventListener("mouseenter", function () {
+            this.style.transform = "translateY(-5px) scale(1.02)";
+          });
+
+          card.addEventListener("mouseleave", function () {
+            this.style.transform = "translateY(0) scale(1)";
+          });
+        });
+      });
+
+      // Handle image loading errors for student photos
+      function handleImageError(img) {
+        img.style.display = "none";
+        img.nextElementSibling.style.display = "flex";
+      }
+
+      // Add error handling to all student photos
+      document.addEventListener("DOMContentLoaded", function () {
+        const studentPhotos = document.querySelectorAll(".student-photo");
+        studentPhotos.forEach((photo) => {
+          photo.addEventListener("error", function () {
+            this.style.display = "none";
+            this.nextElementSibling.style.display = "flex";
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

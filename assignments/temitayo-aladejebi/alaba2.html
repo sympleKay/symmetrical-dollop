@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Magazine Subscription Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+        .form-container {
+            background-color: white;
+            width: 400px;
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px #888;
+        }
+        h2 {
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+        .button-group {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .button-group input {
+            width: 30%;
+            padding: 10px;
+            cursor: pointer;
+        }
+        .cancel {
+            background-color: #ccc;
+        }
+        .submit {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .clear {
+            background-color: #f44336;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Magazine Subscription</h2>
+    <form action="#" method="post">
+        <label for="fname">First Name:</label>
+        <input type="text" id="fname" name="firstname" required>
+
+        <label for="lname">Last Name:</label>
+        <input type="text" id="lname" name="lastname" required>
+
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="username">User Name:</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" required>
+
+        <label for="occupation">Occupation:</label>
+        <input type="text" id="occupation" name="occupation">
+
+        <label for="country">Country:</label>
+        <select id="country" name="country" required>
+            <option value="">--Select Country--</option>
+            <option value="Nigeria">Nigeria</option>
+            <option value="Ghana">Ghana</option>
+            <option value="USA">USA</option>
+            <option value="UK">UK</option>
+            <option value="Other">Other</option>
+        </select>
+
+        <div class="button-group">
+            <input type="button" value="Cancel" class="cancel" onclick="window.location.href='index.html';">
+            <input type="submit" value="Submit" class="submit">
+            <input type="reset" value="Clear" class="clear">
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

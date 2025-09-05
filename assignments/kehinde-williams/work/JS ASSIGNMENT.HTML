@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Guess the Numbers Game</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <h1 style="color: aqua; text-align: center;">Guess the Numbers (0 to 20)</h1>
+    <button onclick="playGame()" style="width:9%; border-radius: 2px;padding-left:40px;">Play Game</button>
+
+    <script>
+        function playGame() {
+            const totalGuesses = 5;
+            let correctGuesses = 0;
+
+            // Generate 5 random numbers between 0 and 20
+            let randomNumbers = [];
+            while (randomNumbers.length < 5) {
+                let num = Math.floor(Math.random() * 21); // 0 to 20
+                if (!randomNumbers.includes(num)) {
+                    randomNumbers.push(num);
+                }
+            }
+
+            // Allow user to guess 5 times
+            for (let i = 1; i <= totalGuesses; i++) {
+                let userGuess = prompt(`Guess ${i} of ${totalGuesses}: Enter a number between 0 and 20`);
+
+                if (userGuess === null) {
+                    alert("Game cancelled.");
+                    return;
+                }
+
+                userGuess = parseInt(userGuess);
+
+                if (isNaN(userGuess) || userGuess < 0 || userGuess > 20) {
+                    alert("Invalid input! Please enter a number between 0 and 20.");
+                    i--; // repeat this guess
+                } else if (randomNumbers.includes(userGuess)) {
+                    alert("✅ Correct!");
+                    correctGuesses++;
+                } else {
+                    alert("❌ Wrong guess.");
+                }
+            }
+
+            alert(`Game Over!\nYou guessed ${correctGuesses} out of ${totalGuesses} correctly.\nCorrect numbers were: ${randomNumbers.join(", ")}`);
+        }
+    </script>
+</body>
+</html>

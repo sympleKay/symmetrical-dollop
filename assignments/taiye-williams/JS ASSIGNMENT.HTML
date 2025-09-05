@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Guess the Numbers Game</title>
+</head>
+<body>
+
+    <h1>🎯 Guess the Numbers (0 to 20)</h1>
+    <p>Try to guess 5 hidden numbers between 0 and 20. Good luck!</p>
+    <button onclick="playGame()">Play Game</button>
+
+    <script>
+        function playGame() {
+            const totalGuesses = 5;
+            let correctGuesses = 0;
+
+            // Generate 5 unique random numbers between 0 and 20
+            let randomNumbers = [];
+            while (randomNumbers.length < 5) {
+                let num = Math.floor(Math.random() * 21); // 0 to 20
+                if (!randomNumbers.includes(num)) {
+                    randomNumbers.push(num);
+                }
+            }
+
+            // Ask the user for guesses
+            for (let i = 1; i <= totalGuesses; i++) {
+                let userGuess = prompt(`🔢 Guess ${i} of ${totalGuesses}: Enter a number between 0 and 20`);
+
+                // Cancel check
+                if (userGuess === null) {
+                    alert("🚪 Game cancelled.");
+                    return;
+                }
+
+                // Convert to number
+                userGuess = parseInt(userGuess);
+
+                // Validate input
+                if (isNaN(userGuess) || userGuess < 0 || userGuess > 20) {
+                    alert("⚠️ Invalid input! Please enter a number between 0 and 20.");
+                    i--; // repeat this guess
+                } else if (randomNumbers.includes(userGuess)) {
+                    alert("✅ Correct!");
+                    correctGuesses++;
+                } else {
+                    alert("❌ Wrong guess.");
+                }
+            }
+
+            // Final result
+            alert(
+                `🏁 Game Over!\n\nYou guessed ${correctGuesses} out of ${totalGuesses} correctly.\n` +
+                `The hidden numbers were: ${randomNumbers.join(", ")}`
+            );
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- SEO and Social Media Meta Tags -->
+    <meta
+      name="description"
+      content="PGD Class Assignments - Redeemer University Web Development Course 2024/2025. View student projects and assignments."
+    />
+    <meta name="author" content="PGD Class 2024/2025" />
+
+    <!-- Open Graph Meta Tags (Facebook, WhatsApp, LinkedIn) -->
+    <meta
+      property="og:title"
+      content="PGD Class Assignments - Redeemer University"
+    />
+    <meta
+      property="og:description"
+      content="Explore outstanding web development assignments from PGD students at Redeemer University. Academic Session 2024/2025."
+    />
+    <meta
+      property="og:image"
+      content="https://res.cloudinary.com/dqudalhk0/image/upload/v1757107011/shoot-run_d08g5j.jpg"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content="https://pgd.innoxtech.co" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Redeemer University PGD Portal" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="PGD Class Assignments - Redeemer University"
+    />
+    <meta
+      name="twitter:description"
+      content="Explore outstanding web development assignments from PGD students at Redeemer University."
+    />
+    <meta
+      name="twitter:image"
+      content="https://res.cloudinary.com/dqudalhk0/image/upload/v1757107011/shoot-run_d08g5j.jpg"
+    />
+
+    <!-- Additional Meta Tags -->
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://pdg.innoxtech.co" />
+    <title>PGD Class Assignments - Redeemer University</title>
+    <link rel="stylesheet" href="/styles/main.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-content">
+        <a href="#" class="nav-brand">
+          <div class="nav-logo">
+            <img src="/images/logo.jpeg" alt="RUN Logo" />
+          </div>
+          RUN Portal
+        </a>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#assignments">Assignments</a></li>
+          <li><a href="#students">Students</a></li>
+        </ul>
+        <button class="mobile-menu-btn">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </nav>
+
+    <div class="container">
+      <!-- Hero Section -->
+      <section class="hero fade-in" id="home">
+        <div class="hero-content">
+          <div class="university-logo">
+            <img src="/images/run-logo.png" alt="RUN Logo" />
+          </div>
+          <h1>Redeemer's University</h1>
+          <p>Post Graduate Diploma (PGD)</p>
+          <p class="academic-year">Academic Session 2024/2025</p>
+        </div>
+      </section>
+
+      <!-- Lecturer Section -->
+      <section class="lecturer-section fade-in" id="lecturer">
+        <div class="lecturer-card">
+          <div class="lecturer-content">
+            <div class="lecturer-avatar">
+              <img
+                src="/images/students//lecturer.jpeg"
+                alt="Course Lecturer"
+                class="lecturer-photo"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              />
+              <span class="lecturer-fallback">
+                <i class="fas fa-chalkboard-teacher"></i>
+              </span>
+            </div>
+            <div class="lecturer-info">
+              <h3 class="lecturer-name">Dr. Adepoju</h3>
+              <p class="lecturer-title">Course Lecturer - Web Development</p>
+              <p class="lecturer-department">Department of Computer Science</p>
+              <p class="lecturer-description">
+                Leading expert in web technologies with over 10 years of
+                experience in software development and education. Passionate
+                about training the next generation of web developers.
+              </p>
+              <div class="lecturer-contact">
+                <a href="mailto:adepoju@run.edu.ng" class="contact-btn">
+                  <i class="fas fa-envelope"></i>
+                  Contact Lecturer
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Stats Section -->
+      <section class="stats slide-up" id="students">
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fas fa-tasks"></i>
+          </div>
+          <span class="stat-number" id="totalAssignments">4</span>
+          <span class="stat-label">Total Assignments</span>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fas fa-check-circle"></i>
+          </div>
+          <span class="stat-number" id="completedAssignments">2</span>
+          <span class="stat-label">Completed</span>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fas fa-clock"></i>
+          </div>
+          <span class="stat-number" id="pendingAssignments">4</span>
+          <span class="stat-label">Pending</span>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <span class="stat-number">8</span>
+          <span class="stat-label">Students</span>
+        </div>
+      </section>
+
+      <!-- Main Content -->
+      <main class="main-content slide-up" id="assignments">
+        <div class="section-header">
+          <h2 class="section-title">Student Assignments</h2>
+          <p class="section-subtitle">All PGD students assignment</p>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls">
+          <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input
+              type="text"
+              placeholder="Search students or assignments..."
+              id="searchInput"
+            />
+          </div>
+          <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="completed">
+              Completed
+            </button>
+            <button class="filter-btn" data-filter="pending">Pending</button>
+          </div>
+        </div>
+
+        <!-- Loading State -->
+        <div class="loading" id="loading">
+          <div class="spinner"></div>
+        </div>
+
+        <!-- Assignments Grid -->
+        <div class="assignments-grid" id="assignmentsGrid">
+          <div class="assignment-card" data-status="completed">
+            <div class="card-header">
+              <div class="student-avatar">
+                <img
+                  src="/images/students/kayode.jpg"
+                  alt="Oluwakayode Fafiyebi"
+                  class="student-photo"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                />
+                <span class="avatar-fallback">OF</span>
+                <div class="status-indicator status-completed"></div>
+              </div>
+              <h3 class="student-name">Oluwakayode Fafiyebi</h3>
+              <p class="student-matric">Matric No: RUN/CMP/24/18200</p>
+              <p class="assignment-title">Web Development Assignment</p>
+              <div class="card-meta">
+                <div class="meta-item">
+                  <i class="fas fa-calendar"></i>
+                  <span>July - August, 2025</span>
+                </div>
+                <div class="meta-item">
+                  <i class="fas fa-code"></i>
+                  <span>HTML,CSS,JavaScript</span>
+                </div>
+              </div>
+            </div>
+            <div class="card-actions">
+              <a
+                href="assignments/oluwakayode-fafiyebi/index.html"
+                class="btn btn-primary"
+                target="_blank"
+              >
+                <i class="fas fa-external-link-alt"></i>
+                View Project
+              </a>
+              <button class="btn btn-secondary">
+                <i class="fas fa-info-circle"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="assignments-grid" id="assignmentsGrid">
+          <div class="assignment-card" data-status="completed">
+            <div class="card-header">
+              <div class="student-avatar">
+                <img
+                  src="/images/students/Taiye.jpg"
+                  alt="Taiye Williams"
+                  class="student-photo"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                />
+                <span class="avatar-fallback">TW</span>
+                <div class="status-indicator status-completed"></div>
+              </div>
+              <h3 class="student-name">Taiye Williams</h3>
+              <p class="student-matric">Matric No: RUN/CMP/24/18200</p>
+              <p class="assignment-title">Web Development Assignment</p>
+              <div class="card-meta">
+                <div class="meta-item">
+                  <i class="fas fa-calendar"></i>
+                  <span>July - August, 2025</span>
+                </div>
+                <div class="meta-item">
+                  <i class="fas fa-code"></i>
+                  <span>HTML,CSS,JavaScript</span>
+                </div>
+              </div>
+            </div>
+            <div class="card-actions">
+              <a
+                href="assignments/taiye-williams/"
+                class="btn btn-primary"
+                target="_blank"
+              >
+                <i class="fas fa-external-link-alt"></i>
+                View Project
+              </a>
+              <button class="btn btn-secondary">
+                <i class="fas fa-info-circle"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="assignments-grid" id="assignmentsGrid">
+          <div class="assignment-card" data-status="completed">
+            <div class="card-header">
+              <div class="student-avatar">
+                <img
+                  src="/images/students/kehinde.jpg"
+                  alt="Kehinde Williams"
+                  class="student-photo"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                />
+                <span class="avatar-fallback">KW</span>
+                <div class="status-indicator status-completed"></div>
+              </div>
+              <h3 class="student-name">Kehinde Williams</h3>
+              <p class="student-matric">Matric No: RUN/CMP/24/18200</p>
+              <p class="assignment-title">Web Development Assignment</p>
+              <div class="card-meta">
+                <div class="meta-item">
+                  <i class="fas fa-calendar"></i>
+                  <span>July - August, 2025</span>
+                </div>
+                <div class="meta-item">
+                  <i class="fas fa-code"></i>
+                  <span>HTML,CSS,JavaScript</span>
+                </div>
+              </div>
+            </div>
+            <div class="card-actions">
+              <a
+                href="assignments/kehinde-williams/"
+                class="btn btn-primary"
+                target="_blank"
+              >
+                <i class="fas fa-external-link-alt"></i>
+                View Project
+              </a>
+              <button class="btn btn-secondary">
+                <i class="fas fa-info-circle"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="assignments-grid" id="assignmentsGrid">
+          <div class="assignment-card" data-status="completed">
+            <div class="card-header">
+              <div class="student-avatar">
+                <img
+                  src="/images/students/Aishat.jpg"
+                  alt="Aishat Akingbade"
+                  class="student-photo"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                />
+                <span class="avatar-fallback">AA</span>
+                <div class="status-indicator status-completed"></div>
+              </div>
+              <h3 class="student-name">Aishat Akingbade</h3>
+              <p class="student-matric">Matric No: RUN/CMP/24/18200</p>
+              <p class="assignment-title">Web Development Assignment</p>
+              <div class="card-meta">
+                <div class="meta-item">
+                  <i class="fas fa-calendar"></i>
+                  <span>July - August, 2025</span>
+                </div>
+                <div class="meta-item">
+                  <i class="fas fa-code"></i>
+                  <span>HTML,CSS,JavaScript</span>
+                </div>
+              </div>
+            </div>
+            <div class="card-actions">
+              <a
+                href="assignments/aishat-akingbade/"
+                class="btn btn-primary"
+                target="_blank"
+              >
+                <i class="fas fa-external-link-alt"></i>
+                View Project
+              </a>
+              <button class="btn btn-secondary">
+                <i class="fas fa-info-circle"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="assignments-grid" id="assignmentsGrid">
+          <div class="assignment-card" data-status="completed">
+            <div class="card-header">
+              <div class="student-avatar">
+                <img
+                  src="/images/students/ife.png"
+                  alt="Ifeoluwa"
+                  class="student-photo"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                />
+                <span class="avatar-fallback">IT</span>
+                <div class="status-indicator status-completed"></div>
+              </div>
+              <h3 class="student-name">Ifeoluwa Tijesuni</h3>
+              <p class="student-matric">Matric No: RUN/CMP/24/181196</p>
+              <p class="assignment-title">Web Development Assignment</p>
+              <div class="card-meta">
+                <div class="meta-item">
+                  <i class="fas fa-calendar"></i>
+                  <span>July - August, 2025</span>
+                </div>
+                <div class="meta-item">
+                  <i class="fas fa-code"></i>
+                  <span>HTML,CSS,JavaScript</span>
+                </div>
+              </div>
+            </div>
+            <div class="card-actions">
+              <a
+                href="assignments/ifeoluwa/"
+                class="btn btn-primary"
+                target="_blank"
+              >
+                <i class="fas fa-external-link-alt"></i>
+                View Project
+              </a>
+              <button class="btn btn-secondary">
+                <i class="fas fa-info-circle"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="assignments-grid" id="assignmentsGrid">
+          <div class="assignment-card" data-status="completed">
+            <div class="card-header">
+              <div class="student-avatar">
+                <img
+                  src="/images/students/Tayo.jpg"
+                  alt="Ifeoluwa"
+                  class="student-photo"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                />
+                <span class="avatar-fallback">OA</span>
+                <div class="status-indicator status-completed"></div>
+              </div>
+              <h3 class="student-name">Oluwatemitayo Aladejebi</h3>
+              <p class="student-matric">Matric No: RUN/CMP/24/181196</p>
+              <p class="assignment-title">Web Development Assignment</p>
+              <div class="card-meta">
+                <div class="meta-item">
+                  <i class="fas fa-calendar"></i>
+                  <span>July - August, 2025</span>
+                </div>
+                <div class="meta-item">
+                  <i class="fas fa-code"></i>
+                  <span>HTML,CSS,JavaScript</span>
+                </div>
+              </div>
+            </div>
+            <div class="card-actions">
+              <a
+                href="assignments/temitayo-aladejebi/"
+                class="btn btn-primary"
+                target="_blank"
+              >
+                <i class="fas fa-external-link-alt"></i>
+                View Project
+              </a>
+              <button class="btn btn-secondary">
+                <i class="fas fa-info-circle"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="assignments-grid" id="assignmentsGrid">
+          <div class="assignment-card" data-status="completed">
+            <div class="card-header">
+              <div class="student-avatar">
+                <img
+                  src="/images/students/Temitope.jpg"
+                  alt="Ifeoluwa"
+                  class="student-photo"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                />
+                <span class="avatar-fallback">TA</span>
+                <div class="status-indicator status-completed"></div>
+              </div>
+              <h3 class="student-name">Temitope Adebayo</h3>
+              <p class="student-matric">Matric No: RUN/CMP/24/17876</p>
+              <p class="assignment-title">Web Development Assignment</p>
+              <div class="card-meta">
+                <div class="meta-item">
+                  <i class="fas fa-calendar"></i>
+                  <span>July - August, 2025</span>
+                </div>
+                <div class="meta-item">
+                  <i class="fas fa-code"></i>
+                  <span>HTML,CSS,JavaScript</span>
+                </div>
+              </div>
+            </div>
+            <div class="card-actions">
+              <a
+                href="assignments/temitope-adebayo/"
+                class="btn btn-primary"
+                target="_blank"
+              >
+                <i class="fas fa-external-link-alt"></i>
+                View Project
+              </a>
+              <button class="btn btn-secondary">
+                <i class="fas fa-info-circle"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="assignments-grid" id="assignmentsGrid">
+          <div class="assignment-card" data-status="pending">
+            <div class="card-header">
+              <div class="student-avatar">
+                <img
+                  src="/images/students/caleb.jpg"
+                  alt="Ifeoluwa"
+                  class="student-photo"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                />
+                <span class="avatar-fallback">C</span>
+                <div class="status-indicator status-completed"></div>
+              </div>
+              <h3 class="student-name">Caleb</h3>
+              <p class="student-matric">Matric No: RUN/CMP/24/181196</p>
+              <p class="assignment-title">Web Development Assignment</p>
+              <div class="card-meta">
+                <div class="meta-item">
+                  <i class="fas fa-calendar"></i>
+                  <span>July - August, 2025</span>
+                </div>
+                <div class="meta-item">
+                  <i class="fas fa-code"></i>
+                  <span>HTML,CSS,JavaScript</span>
+                </div>
+              </div>
+            </div>
+            <div class="card-actions">
+              <a href="#" class="btn btn-primary" target="_blank">
+                <i class="fas fa-external-link-alt"></i>
+                View Project
+              </a>
+              <button class="btn btn-secondary">
+                <i class="fas fa-info-circle"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <i class="fas fa-graduation-cap"></i>
+          <span>Redeemer's University</span>
+        </div>
+        <ul class="footer-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#assignments">Assignments</a></li>
+          <li><a href="#students">Students</a></li>
+        </ul>
+      </div>
+      <div class="footer-bottom">
+        <p>
+          &copy; 2025 Redeemer's University, Ede. Post Graduate Diploma
+          Assignment Portal.
+        </p>
+        <p>Created with ❤️ by PGD Class of 2024/2025</p>
+      </div>
+    </footer>
+
+    <script>
+      // Enhanced JavaScript for professional functionality
+      class AssignmentPortal {
+        constructor() {
+          this.assignments = [];
+          this.filteredAssignments = [];
+          this.currentFilter = "all";
+          this.searchTerm = "";
+          this.init();
+        }
+
+        init() {
+          this.setupEventListeners();
+          this.loadAssignments();
+          this.updateStats();
+          this.initializeAnimations();
+          this.setupNavbarScroll();
+        }
+
+        setupEventListeners() {
+          // Search functionality
+          const searchInput = document.getElementById("searchInput");
+          searchInput.addEventListener("input", (e) => {
+            this.searchTerm = e.target.value.toLowerCase();
+            this.filterAssignments();
+          });
+
+          // Filter buttons
+          const filterButtons = document.querySelectorAll(".filter-btn");
+          filterButtons.forEach((btn) => {
+            btn.addEventListener("click", (e) => {
+              // Remove active class from all buttons
+              filterButtons.forEach((b) => b.classList.remove("active"));
+              // Add active class to clicked button
+              e.target.classList.add("active");
+
+              this.currentFilter = e.target.dataset.filter;
+              this.filterAssignments();
+            });
+          });
+
+          // Smooth scrolling for navigation links
+          document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+            anchor.addEventListener("click", (e) => {
+              e.preventDefault();
+              const target = document.querySelector(
+                anchor.getAttribute("href")
+              );
+              if (target) {
+                target.scrollIntoView({
+                  behavior: "smooth",
+                  block: "start",
+                });
+              }
+            });
+          });
+
+          // Mobile menu toggle
+          const mobileMenuBtn = document.querySelector(".mobile-menu-btn");
+          const navLinks = document.querySelector(".nav-links");
+
+          if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener("click", () => {
+              navLinks.classList.toggle("show");
+            });
+          }
+        }
+
+        loadAssignments() {
+          const assignmentCards = document.querySelectorAll(".assignment-card");
+          this.assignments = Array.from(assignmentCards).map((card) => {
+            return {
+              element: card,
+              name: card
+                .querySelector(".student-name")
+                .textContent.toLowerCase(),
+              title: card
+                .querySelector(".assignment-title")
+                .textContent.toLowerCase(),
+              status: card.dataset.status,
+            };
+          });
+          this.filteredAssignments = [...this.assignments];
+        }
+
+        filterAssignments() {
+          this.showLoading();
+
+          setTimeout(() => {
+            this.filteredAssignments = this.assignments.filter((assignment) => {
+              const matchesSearch =
+                assignment.name.includes(this.searchTerm) ||
+                assignment.title.includes(this.searchTerm);
+              const matchesFilter =
+                this.currentFilter === "all" ||
+                assignment.status === this.currentFilter;
+
+              return matchesSearch && matchesFilter;
+            });
+
+            this.renderAssignments();
+            this.hideLoading();
+          }, 300);
+        }
+
+        renderAssignments() {
+          const grid = document.getElementById("assignmentsGrid");
+
+          // Hide all assignments first
+          this.assignments.forEach((assignment) => {
+            assignment.element.style.display = "none";
+          });
+
+          // Show filtered assignments with animation
+          this.filteredAssignments.forEach((assignment, index) => {
+            assignment.element.style.display = "block";
+            assignment.element.style.animation = `slideUp 0.6s ease-out ${
+              index * 0.1
+            }s forwards`;
+          });
+
+          // Show no results message if needed
+          if (this.filteredAssignments.length === 0) {
+            this.showNoResults();
+          } else {
+            this.hideNoResults();
+          }
+        }
+
+        showLoading() {
+          document.getElementById("loading").style.display = "flex";
+          document.getElementById("assignmentsGrid").style.opacity = "0.5";
+        }
+
+        hideLoading() {
+          document.getElementById("loading").style.display = "none";
+          document.getElementById("assignmentsGrid").style.opacity = "1";
+        }
+
+        showNoResults() {
+          if (!document.querySelector(".no-results")) {
+            const noResults = document.createElement("div");
+            noResults.className = "no-results";
+            noResults.innerHTML = `
+                        <div style="text-align: center; padding: 3rem; color: var(--gray-500);">
+                            <i class="fas fa-search" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.5;"></i>
+                            <h3>No assignments found</h3>
+                            <p>Try adjusting your search terms or filters</p>
+                        </div>
+                    `;
+            document.getElementById("assignmentsGrid").appendChild(noResults);
+          }
+        }
+
+        hideNoResults() {
+          const noResults = document.querySelector(".no-results");
+          if (noResults) {
+            noResults.remove();
+          }
+        }
+
+        updateStats() {
+          const totalCards =
+            document.querySelectorAll(".assignment-card").length;
+          const completedCards = document.querySelectorAll(
+            '.assignment-card[data-status="completed"]'
+          ).length;
+          const pendingCards = totalCards - completedCards;
+
+          // Animate stat numbers
+          this.animateNumber("totalAssignments", totalCards);
+          this.animateNumber("completedAssignments", completedCards);
+          this.animateNumber("pendingAssignments", pendingCards);
+        }
+
+        animateNumber(elementId, targetNumber) {
+          const element = document.getElementById(elementId);
+          const duration = 2000;
+          const stepTime = 50;
+          const steps = duration / stepTime;
+          const increment = targetNumber / steps;
+          let current = 0;
+
+          const timer = setInterval(() => {
+            current += increment;
+            if (current >= targetNumber) {
+              current = targetNumber;
+              clearInterval(timer);
+            }
+            element.textContent = Math.floor(current);
+          }, stepTime);
+        }
+
+        initializeAnimations() {
+          // Intersection Observer for scroll animations
+          const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px",
+          };
+
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("animate");
+              }
+            });
+          }, observerOptions);
+
+          // Observe elements for animation
+          document
+            .querySelectorAll(".stat-card, .assignment-card")
+            .forEach((el) => {
+              observer.observe(el);
+            });
+        }
+
+        setupNavbarScroll() {
+          const navbar = document.getElementById("navbar");
+          let lastScrollTop = 0;
+
+          window.addEventListener("scroll", () => {
+            const scrollTop =
+              window.pageYOffset || document.documentElement.scrollTop;
+
+            if (scrollTop > 100) {
+              navbar.classList.add("scrolled");
+            } else {
+              navbar.classList.remove("scrolled");
+            }
+
+            // Hide/show navbar on scroll
+            if (scrollTop > lastScrollTop && scrollTop > 200) {
+              navbar.style.transform = "translateY(-100%)";
+            } else {
+              navbar.style.transform = "translateY(0)";
+            }
+
+            lastScrollTop = scrollTop;
+          });
+        }
+      }
+
+      // Initialize the portal when DOM is loaded
+      document.addEventListener("DOMContentLoaded", () => {
+        new AssignmentPortal();
+      });
+
+      // Add some interactive features
+      document.addEventListener("DOMContentLoaded", () => {
+        // Add hover effects to cards
+        document.querySelectorAll(".assignment-card").forEach((card) => {
+          card.addEventListener("mouseenter", () => {
+            card.style.transform = "translateY(-8px) scale(1.02)";
+          });
+
+          card.addEventListener("mouseleave", () => {
+            card.style.transform = "translateY(0) scale(1)";
+          });
+        });
+
+        // Add click effects to buttons
+        document.querySelectorAll(".btn").forEach((btn) => {
+          btn.addEventListener("click", (e) => {
+            // Create ripple effect
+            const ripple = document.createElement("span");
+            const rect = btn.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+
+            ripple.style.cssText = `
+                        position: absolute;
+                        width: ${size}px;
+                        height: ${size}px;
+                        left: ${x}px;
+                        top: ${y}px;
+                        background: rgba(255, 255, 255, 0.3);
+                        border-radius: 50%;
+                        transform: scale(0);
+                        animation: ripple 0.6s linear;
+                        pointer-events: none;
+                    `;
+
+            btn.style.position = "relative";
+            btn.style.overflow = "hidden";
+            btn.appendChild(ripple);
+
+            setTimeout(() => ripple.remove(), 600);
+          });
+        });
+      });
+
+      // Add CSS animation for ripple effect
+      const style = document.createElement("style");
+      style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+      document.head.appendChild(style);
+    </script>
+  </body>
+</html>
+<!-- 
+
+List of the Assignment 
+1. Create a website for Web development class having all the students name and pictures. 
+2. Distinguish clearly between Internet and web
+3. History of Internet 
+4. History of html
+5. CSS styling in HTML
+6. History of JavaScript 
+7. Write JS program that will allow user to guess 5 numbers within 0-20
+-->

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>How to Add Audio and Video to HTML</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f0f0f0;
+      color: #333;
+    }
+    h1, h2 {
+      color: #003366;
+    }
+    p {
+      margin-bottom: 10px;
+    }
+    pre {
+      background-color: #e8e8e8;
+      padding: 10px;
+      border-left: 4px solid #007acc;
+      overflow-x: auto;
+    }
+    ul {
+      background-color: #fafafa;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    code {
+      font-family: Consolas, monospace;
+      background-color: #f5f5f5;
+      padding: 2px 4px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>How to Add Audio and Video to HTML</h1>
+
+  <h2>1. Adding Audio</h2>
+  <p>You can use the <code>&lt;audio&gt;</code> tag to embed audio files in your HTML page:</p>
+  <pre><code>&lt;audio controls&gt;
+  &lt;source src="audiofile.mp3" type="audio/mpeg"&gt;
+  Your browser does not support the audio element.
+&lt;/audio&gt;</code></pre>
+
+  <h2>2. Adding Video</h2>
+  <p>You can use the <code>&lt;video&gt;</code> tag to embed video files in your HTML page:</p>
+  <pre><code>&lt;video width="600" controls&gt;
+  &lt;source src="videofile.mp4" type="video/mp4"&gt;
+  Your browser does not support the video tag.
+&lt;/video&gt;</code></pre>
+
+  <h2>3. Multiple Sources for Compatibility</h2>
+  <p>Provide multiple formats for better browser support:</p>
+  <pre><code>&lt;audio controls&gt;
+  &lt;source src="sound.ogg" type="audio/ogg"&gt;
+  &lt;source src="sound.mp3" type="audio/mpeg"&gt;
+  Your browser does not support the audio tag.
+&lt;/audio&gt;
+
+&lt;video width="600" controls&gt;
+  &lt;source src="movie.webm" type="video/webm"&gt;
+  &lt;source src="movie.mp4" type="video/mp4"&gt;
+  Your browser does not support the video tag.
+&lt;/video&gt;</code></pre>
+
+  <h2>4. Optional Attributes</h2>
+  <ul>
+    <li><code>autoplay</code>: Start the media automatically when the page loads.</li>
+    <li><code>loop</code>: Play the media file repeatedly.</li>
+    <li><code>muted</code>: Mute the audio by default.</li>
+    <li><code>poster</code> (for video): Show an image before the video starts.</li>
+  </ul>
+
+  <p>Example using optional attributes:</p>
+  <pre><code>&lt;video width="600" controls autoplay loop muted poster="thumbnail.jpg"&gt;
+  &lt;source src="video.mp4" type="video/mp4"&gt;
+&lt;/video&gt;</code></pre>
+
+</body>
+</html>

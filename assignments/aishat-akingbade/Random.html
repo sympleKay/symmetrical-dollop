@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Guess the Number (1–20)</title>
+</head>
+<body>
+  <h2>Guess the Number Game (1–20)</h2>
+  <button onclick="startGame()">Start Game</button>
+
+  <script>
+    function startGame() {
+      // Generate a random number between 1 and 20
+      let randomNumber = Math.floor(Math.random() * 20) + 1;
+
+      let attempts = 5;
+      let guessedCorrectly = false;
+
+      // Give the player 5 chances
+      for (let i = 0; i < attempts; i++) {
+        let guess = parseInt(prompt(`Guess a number (1–20). Attempt ${i + 1} of ${attempts}:`));
+
+        if (guess === randomNumber) {
+          alert(`🎉 Correct! The number was ${randomNumber}.`);
+          guessedCorrectly = true;
+          break;
+        } else if (guess > randomNumber) {
+          alert("📉 Too high! Try again.");
+        } else if (guess < randomNumber) {
+          alert("📈 Too low! Try again.");
+        }
+      }
+
+      if (!guessedCorrectly) {
+        alert(`❌ Game Over! The correct number was ${randomNumber}.`);
+      }
+    }
+  </script>
+</body>
+</html>
