@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Web Development Assignment - PGD Class</title>
+    <style>
+      body {
+        font-family: Georgia, serif;
+        background: linear-gradient(45deg, #ff9a9e, #fecfef, #fecfef, #fad0c4);
+        margin: 0;
+        padding: 15px;
+        min-height: 100vh;
+      }
+
+      .main-container {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      .header-card {
+        background: white;
+        border-radius: 15px;
+        padding: 25px;
+        text-align: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        margin-bottom: 25px;
+        border: 3px solid #ff6b6b;
+      }
+
+      h1 {
+        color: #d63031;
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+        font-weight: bold;
+      }
+
+      h2 {
+        color: #2d3436;
+        background: linear-gradient(90deg, #74b9ff, #0984e3);
+        color: white;
+        padding: 15px;
+        border-radius: 10px;
+        margin: 25px 0 20px 0;
+        text-align: center;
+      }
+
+      h3 {
+        color: #6c5ce7;
+        margin-top: 20px;
+      }
+
+      .university-info {
+        background: linear-gradient(135deg, #fdcb6e, #e17055);
+        color: white;
+        padding: 15px;
+        border-radius: 10px;
+        margin: 15px 0;
+      }
+
+      /* Content Cards */
+      .content-card {
+        background: white;
+        border-radius: 12px;
+        padding: 25px;
+        margin-bottom: 25px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        border-left: 6px solid #00b894;
+      }
+
+      /* Student Cards Layout */
+      .students-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        justify-content: center;
+        margin: 20px 0;
+      }
+
+      .student-card {
+        background: white;
+        border: 2px solid #fd79a8;
+        border-radius: 15px;
+        padding: 20px;
+        width: 180px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+
+      .student-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .student-image-container {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, #fd79a8, #fdcb6e);
+        margin: 0 auto 15px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 22px;
+        font-weight: bold;
+        border: 3px solid white;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+      }
+
+      .student-img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .student-initials {
+        display: none;
+      }
+
+      .student-name {
+        font-weight: bold;
+        color: #2d3436;
+        margin-bottom: 8px;
+        font-size: 16px;
+      }
+
+      .student-id {
+        color: #636e72;
+        font-size: 12px;
+        background: #ddd6fe;
+        padding: 4px 8px;
+        border-radius: 15px;
+      }
+
+      /* Comparison Table */
+      .info-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .info-table th {
+        background: linear-gradient(135deg, #a29bfe, #6c5ce7);
+        color: white;
+        padding: 15px;
+        font-weight: bold;
+      }
+
+      .info-table td {
+        padding: 12px 15px;
+        border-bottom: 1px solid #dfe6e9;
+      }
+
+      .info-table tr:nth-child(even) {
+        background: #f8f9fa;
+      }
+
+      .info-table tr:hover {
+        background: #e8f4f8;
+      }
+
+      /* History Timeline */
+      .history-item {
+        background: linear-gradient(135deg, #ffecd2, #fcb69f);
+        border-radius: 10px;
+        padding: 20px;
+        margin: 15px 0;
+        border-left: 5px solid #e17055;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .history-year {
+        background: #00b894;
+        color: white;
+        padding: 8px 15px;
+        border-radius: 20px;
+        display: inline-block;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      /* Game Section */
+      .game-section {
+        background: linear-gradient(135deg, #ffd7e4, #c8b2db);
+        border: 3px solid #fd79a8;
+        border-radius: 20px;
+        padding: 30px;
+        text-align: center;
+        margin: 25px 0;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .info-table .student-image-container {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #fd79a8, #fdcb6e);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        border: 2px solid white;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+      }
+
+      .info-table .student-img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .info-table .student-initials {
+        display: none;
+      }
+
+      .number-inputs {
+        margin: 20px 0;
+      }
+
+      .number-input {
+        width: 55px;
+        height: 55px;
+        border: 3px solid #fd79a8;
+        border-radius: 50%;
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+        margin: 8px;
+        background: white;
+      }
+
+      .number-input:focus {
+        outline: none;
+        border-color: #e84393;
+        background: #ffeaa7;
+      }
+
+      .game-button {
+        background: linear-gradient(135deg, #00b894, #00a085);
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        border-radius: 25px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        margin: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+      }
+
+      .game-button:hover {
+        background: linear-gradient(135deg, #00a085, #008f7a);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      .game-result {
+        margin-top: 20px;
+        padding: 20px;
+        background: white;
+        border-radius: 15px;
+        border: 2px solid #74b9ff;
+      }
+
+      /* Code Display */
+      .code-display {
+        background: #2d3436;
+        color: #00b894;
+        padding: 15px;
+        border-radius: 8px;
+        font-family: "Courier New", monospace;
+        margin: 15px 0;
+        border: 2px solid #636e72;
+      }
+
+      /* Lists */
+      ul {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      li {
+        background: #dfe6e9;
+        margin: 8px 0;
+        padding: 10px 15px;
+        border-radius: 8px;
+        border-left: 4px solid #74b9ff;
+      }
+
+      /* Footer */
+      .footer-section {
+        background: linear-gradient(135deg, #636e72, #2d3436);
+        color: white;
+        text-align: center;
+        padding: 25px;
+        border-radius: 15px;
+        margin-top: 30px;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .main-container {
+          padding: 10px;
+        }
+
+        h1 {
+          font-size: 2rem;
+        }
+
+        .students-container {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .student-card {
+          width: 90%;
+          max-width: 250px;
+        }
+
+        .number-input {
+          width: 45px;
+          height: 45px;
+          margin: 5px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main-container">
+      <!-- Header -->
+      <div class="header-card">
+        <h1>Web Development Assignment</h1>
+        <div class="university-info">
+          <p><strong>Post Graduate Diploma (PGD)</strong></p>
+          <p>Redeemer's University, Ede</p>
+          <p><em>Academic Session 2024/2025</em></p>
+        </div>
+      </div>
+
+      <!-- 1. Students Section -->
+      <div class="content-card">
+        <h2>1. Our Amazing Class Students</h2>
+        <p>
+          Meet our wonderful web development students who are learning to build
+          amazing websites!
+        </p>
+
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th>Photo</th>
+              <th>Student Name</th>
+              <th>Student ID</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="text-align: center">
+                <div class="student-image-container" style="margin: 0 auto">
+                  <img
+                    src="/images/students/Temitope.jpg"
+                    alt="Temitope Adebayo"
+                    class="student-img"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                  />
+                  <span class="student-initials">TA</span>
+                </div>
+              </td>
+              <td><strong>Temitope Adebayo</strong></td>
+              <td>CMP/RUN/24/17876</td>
+              <td>Active</td>
+            </tr>
+            <tr>
+              <td style="text-align: center">
+                <div class="student-image-container" style="margin: 0 auto">
+                  <img
+                    src="/images/students/Taiye.jpg"
+                    alt="Williams Taiye"
+                    class="student-img"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                  />
+                  <span class="student-initials">WT</span>
+                </div>
+              </td>
+              <td><strong>Williams Taiye</strong></td>
+              <td>CMP/RUN/24/17878</td>
+              <td>Active</td>
+            </tr>
+            <tr>
+              <td style="text-align: center">
+                <div class="student-image-container" style="margin: 0 auto">
+                  <img
+                    src="/images/students/Tayo.jpg"
+                    alt="Aladeji Oluwatemitayo"
+                    class="student-img"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                  />
+                  <span class="student-initials">AO</span>
+                </div>
+              </td>
+              <td><strong>Aladeji Oluwatemitayo</strong></td>
+              <td>CMP/RUN/24/18164</td>
+              <td>Active</td>
+            </tr>
+            <tr>
+              <td style="text-align: center">
+                <div class="student-image-container" style="margin: 0 auto">
+                  <img
+                    src="/images/students/caleb.jpg"
+                    alt="Opelami Caleb"
+                    class="student-img"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                  />
+                  <span class="student-initials">OC</span>
+                </div>
+              </td>
+              <td><strong>Opelami Caleb</strong></td>
+              <td>CMP/RUN/24/18174</td>
+              <td>Active</td>
+            </tr>
+            <tr>
+              <td style="text-align: center">
+                <div class="student-image-container" style="margin: 0 auto">
+                  <img
+                    src="/images/students/ife.png"
+                    alt="Taiwo Ife"
+                    class="student-img"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                  />
+                  <span class="student-initials">TI</span>
+                </div>
+              </td>
+              <td><strong>Taiwo Ife</strong></td>
+              <td>CMP/RUN/24/18196</td>
+              <td>Active</td>
+            </tr>
+            <tr>
+              <td style="text-align: center">
+                <div class="student-image-container" style="margin: 0 auto">
+                  <img
+                    src="/images/students/kayode.jpg"
+                    alt="Fafiyebi Oluwakayode"
+                    class="student-img"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                  />
+                  <span class="student-initials">FO</span>
+                </div>
+              </td>
+              <td><strong>Fafiyebi Oluwakayode</strong></td>
+              <td>CMP/RUN/24/18200</td>
+              <td>Active</td>
+            </tr>
+            <tr>
+              <td style="text-align: center">
+                <div class="student-image-container" style="margin: 0 auto">
+                  <img
+                    src="/images/students/kehinde.jpg"
+                    alt="Williams Kehinde"
+                    class="student-img"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                  />
+                  <span class="student-initials">WK</span>
+                </div>
+              </td>
+              <td><strong>Williams Kehinde</strong></td>
+              <td>CMP/RUN/24/18202</td>
+              <td>Active</td>
+            </tr>
+            <tr>
+              <td style="text-align: center">
+                <div class="student-image-container" style="margin: 0 auto">
+                  <img
+                    src="/images/students/Aishat.jpg"
+                    alt="Akingbade Aishat"
+                    class="student-img"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                  />
+                  <span class="student-initials">AA</span>
+                </div>
+              </td>
+              <td><strong>Akingbade Aishat</strong></td>
+              <td>CMP/RUN/24/18205</td>
+              <td>Active</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 2. Internet vs Web -->
+      <div class="content-card">
+        <h2>2. Internet and Web - What's the Difference?</h2>
+        <p>
+          Let me explain the difference between Internet and World Wide Web in
+          simple terms:
+        </p>
+
+        <table class="info-table">
+          <tr>
+            <th>Internet</th>
+            <th>World Wide Web</th>
+          </tr>
+          <tr>
+            <td>The big highway system connecting all computers worldwide</td>
+            <td>The websites and pages you visit using browsers</td>
+          </tr>
+          <tr>
+            <td>Born in the 1960s as ARPANET</td>
+            <td>Created in 1989 by Tim Berners-Lee</td>
+          </tr>
+          <tr>
+            <td>Uses TCP/IP protocols to connect networks</td>
+            <td>Uses HTTP/HTTPS to display web pages</td>
+          </tr>
+          <tr>
+            <td>Includes email, file sharing, online gaming</td>
+            <td>Contains websites, blogs, and web applications</td>
+          </tr>
+          <tr>
+            <td>Think of it as the entire postal system</td>
+            <td>Think of it as just the letters and packages</td>
+          </tr>
+        </table>
+
+        <p>
+          <strong>Easy way to remember:</strong> Internet is like the ocean, and
+          the Web is like the ships that sail on it!
+        </p>
+      </div>
+
+      <!-- 3. History of Internet -->
+      <div class="content-card">
+        <h2>3. How the Internet Was Born</h2>
+        <p>The amazing journey of how the Internet came to be:</p>
+
+        <div class="history-item">
+          <div class="history-year">1962</div>
+          <p>
+            J.C.R. Licklider dreamed of connecting computers together in a
+            "Galactic Network".
+          </p>
+        </div>
+
+        <div class="history-item">
+          <div class="history-year">1969</div>
+          <p>
+            ARPANET connected its first 4 computers at universities in the US.
+          </p>
+        </div>
+
+        <div class="history-item">
+          <div class="history-year">1971</div>
+          <p>Ray Tomlinson sent the first email and gave us the @ symbol!</p>
+        </div>
+
+        <div class="history-item">
+          <div class="history-year">1983</div>
+          <p>
+            TCP/IP became the standard way for networks to talk to each other.
+          </p>
+        </div>
+
+        <div class="history-item">
+          <div class="history-year">1991</div>
+          <p>
+            Tim Berners-Lee created the World Wide Web, making the Internet easy
+            for everyone.
+          </p>
+        </div>
+
+        <div class="history-item">
+          <div class="history-year">1993</div>
+          <p>Mosaic browser brought pictures to the web for the first time!</p>
+        </div>
+
+        <div class="history-item">
+          <div class="history-year">2000s</div>
+          <p>
+            High-speed Internet and social media changed how we communicate.
+          </p>
+        </div>
+
+        <div class="history-item">
+          <div class="history-year">Today</div>
+          <p>
+            Mobile Internet puts the whole world in our pockets through
+            smartphones.
+          </p>
+        </div>
+      </div>
+
+      <!-- 4. HTML History -->
+      <div class="content-card">
+        <h2>4. The Story of HTML</h2>
+        <p>
+          HTML (HyperText Markup Language) is the building blocks of every
+          website:
+        </p>
+
+        <div class="history-item">
+          <div class="history-year">1989</div>
+          <p>
+            Tim Berners-Lee invented HTML to share scientific documents easily.
+          </p>
+        </div>
+
+        <div class="history-item">
+          <div class="history-year">1991</div>
+          <p>
+            HTML 1.0 had only 22 basic tags like &lt;h1&gt;, &lt;p&gt;, and
+            &lt;a&gt;.
+          </p>
+        </div>
+
+        <div class="history-item">
+          <div class="history-year">1995</div>
+          <p>HTML 2.0 brought us forms and tables to organize information.</p>
+        </div>
+
+        <div class="history-item">
+          <div class="history-year">1997</div>
+          <p>HTML 3.2 made websites more colorful with better image support.</p>
+        </div>
+
+        <div class="history-item">
+          <div class="history-year">1999</div>
+          <p>HTML 4.01 added CSS support, making websites beautiful!</p>
+        </div>
+
+        <div class="history-item">
+          <div class="history-year">2014</div>
+          <p>HTML5 brought videos, audio, and mobile-friendly features.</p>
+        </div>
+
+        <h3>Common HTML Tags We Use:</h3>
+        <ul>
+          <li>&lt;html&gt; - The container for everything on the page</li>
+          <li>&lt;head&gt; - Information about the page (not visible)</li>
+          <li>&lt;body&gt; - All the content people can see</li>
+          <li>&lt;h1&gt; - The biggest heading</li>
+          <li>&lt;p&gt; - A paragraph of text</li>
+          <li>&lt;img&gt; - Pictures and images</li>
+          <li>&lt;a&gt; - Links to other pages</li>
+        </ul>
+      </div>
+
+      <!-- 5. CSS Styling -->
+      <div class="content-card">
+        <h2>5. Making Websites Pretty with CSS</h2>
+        <p>
+          CSS (Cascading Style Sheets) is like makeup for websites - it makes
+          them look amazing!
+        </p>
+
+        <h3>What CSS Can Do:</h3>
+        <ul>
+          <li>Change text colors and fonts</li>
+          <li>Make backgrounds colorful or add pictures</li>
+          <li>Create layouts and position elements</li>
+          <li>Add animations and cool effects</li>
+        </ul>
+
+        <h3>Three Ways to Add CSS:</h3>
+
+        <p><strong>Method 1: Inline CSS (directly in HTML)</strong></p>
+        <div class="code-display">
+          &lt;p style="color: purple; font-size: 20px;"&gt;Purple
+          text!&lt;/p&gt;
+        </div>
+
+        <p><strong>Method 2: Internal CSS (in the head section)</strong></p>
+        <div class="code-display">
+          &lt;style&gt;<br />
+          &nbsp;&nbsp;p { color: purple; font-size: 20px; }<br />
+          &lt;/style&gt;
+        </div>
+
+        <p><strong>Method 3: External CSS (separate file)</strong></p>
+        <div class="code-display">
+          &lt;link rel="stylesheet" href="mystyles.css"&gt;
+        </div>
+
+        <h3>CSS Selector Types:</h3>
+        <ul>
+          <li><strong>Tag selector:</strong> p { } - styles all paragraphs</li>
+          <li>
+            <strong>Class selector:</strong> .highlight { } - styles elements
+            with class="highlight"
+          </li>
+          <li>
+            <strong>ID selector:</strong> #special { } - styles the element with
+            id="special"
+          </li>
+        </ul>
+      </div>
+
+      <!-- 6. JavaScript History -->
+      <div class="content-card">
+        <h2>6. JavaScript - Making Websites Interactive</h2>
+        <p>JavaScript brings websites to life with interactive features!</p>
+
+        <div class="history-item">
+          <div class="history-year">1995</div>
+          <p>
+            Brendan Eich created JavaScript in just 10 days while working at
+            Netscape!
+          </p>
+        </div>
+
+        <div class="history-item">
+          <div class="history-year">1997</div>
+          <p>JavaScript became an official standard called ECMAScript.</p>
+        </div>
+
+        <div class="history-item">
+          <div class="history-year">2005</div>
+          <p>
+            AJAX was born, letting websites update content without refreshing
+            the page.
+          </p>
+        </div>
+
+        <div class="history-item">
+          <div class="history-year">2009</div>
+          <p>
+            Node.js allowed JavaScript to run on servers, not just browsers.
+          </p>
+        </div>
+
+        <div class="history-item">
+          <div class="history-year">2015</div>
+          <p>
+            ES6 added awesome new features like arrow functions and classes.
+          </p>
+        </div>
+
+        <div class="history-item">
+          <div class="history-year">Now</div>
+          <p>
+            JavaScript powers websites, mobile apps, desktop programs, and even
+            robots!
+          </p>
+        </div>
+
+        <h3>Cool Things JavaScript Can Do:</h3>
+        <ul>
+          <li>Make buttons respond when you click them</li>
+          <li>Create image slideshows and photo galleries</li>
+          <li>Validate forms before submitting them</li>
+          <li>Build interactive games and animations</li>
+          <li>Update content in real-time without page reloads</li>
+        </ul>
+      </div>
+
+      <!-- 7. Number Guessing Game -->
+      <div class="content-card">
+        <h2>7. Fun Number Guessing Game!</h2>
+
+        <div class="game-section">
+          <h3>Can You Guess My Secret Numbers?</h3>
+          <p>
+            I'm thinking of 5 secret numbers between 0 and 20. Can you guess
+            them all?
+          </p>
+
+          <p><strong>Enter your 5 best guesses:</strong></p>
+          <div class="number-inputs">
+            <input
+              type="number"
+              class="number-input"
+              id="guess1"
+              min="0"
+              max="20"
+              placeholder="?"
+            />
+            <input
+              type="number"
+              class="number-input"
+              id="guess2"
+              min="0"
+              max="20"
+              placeholder="?"
+            />
+            <input
+              type="number"
+              class="number-input"
+              id="guess3"
+              min="0"
+              max="20"
+              placeholder="?"
+            />
+            <input
+              type="number"
+              class="number-input"
+              id="guess4"
+              min="0"
+              max="20"
+              placeholder="?"
+            />
+            <input
+              type="number"
+              class="number-input"
+              id="guess5"
+              min="0"
+              max="20"
+              placeholder="?"
+            />
+          </div>
+
+          <button class="game-button" onclick="playGame()">
+            Check My Guesses!
+          </button>
+          <button class="game-button" onclick="startNewGame()">
+            Start New Game
+          </button>
+
+          <div id="gameResults"></div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer-section">
+        <p style="margin-top: 20px"><em>Created by: Opelami Caleb </em></p>
+      </div>
+    </div>
+
+    <script>
+      // Number guessing game JavaScript
+      var secretNumbers = [];
+      var gameInProgress = false;
+
+      function generateSecretNumbers() {
+        secretNumbers = [];
+        for (var i = 0; i < 5; i++) {
+          var randomNumber = Math.floor(Math.random() * 21); // 0 to 20
+          secretNumbers.push(randomNumber);
+        }
+        console.log("New secret numbers generated:", secretNumbers);
+      }
+
+      function playGame() {
+        // Get all the user's guesses
+        var userGuesses = [];
+        for (var i = 1; i <= 5; i++) {
+          var guessValue = parseInt(document.getElementById("guess" + i).value);
+          userGuesses.push(guessValue);
+        }
+
+        // Validate all inputs are numbers between 0 and 20
+        for (var i = 0; i < 5; i++) {
+          if (
+            isNaN(userGuesses[i]) ||
+            userGuesses[i] < 0 ||
+            userGuesses[i] > 20
+          ) {
+            alert("Please enter valid numbers between 0 and 20 in all boxes!");
+            return;
+          }
+        }
+
+        // Generate secret numbers if this is the first game
+        if (secretNumbers.length === 0) {
+          generateSecretNumbers();
+        }
+
+        // Count correct guesses
+        var correctCount = 0;
+        for (var i = 0; i < 5; i++) {
+          if (secretNumbers.includes(userGuesses[i])) {
+            correctCount++;
+          }
+        }
+
+        // Create results display
+        var resultsHTML = "<div class='game-result'>";
+        resultsHTML += "<h3>Game Results</h3>";
+        resultsHTML +=
+          "<p><strong>My secret numbers were:</strong> " +
+          secretNumbers.join(", ") +
+          "</p>";
+        resultsHTML +=
+          "<p><strong>Your guesses were:</strong> " +
+          userGuesses.join(", ") +
+          "</p>";
+        resultsHTML +=
+          "<p><strong>You got " +
+          correctCount +
+          " out of 5 correct!</strong></p>";
+
+        // Add encouraging message based on performance
+        if (correctCount === 5) {
+          resultsHTML +=
+            "<p style='color: #00b894; font-size: 18px; font-weight: bold;'>🎉 INCREDIBLE! You got them all right! You're amazing!</p>";
+        } else if (correctCount >= 3) {
+          resultsHTML +=
+            "<p style='color: #0984e3; font-weight: bold;'>🌟 Excellent work! You're really good at this!</p>";
+        } else if (correctCount >= 1) {
+          resultsHTML +=
+            "<p style='color: #fdcb6e; font-weight: bold;'>👍 Nice try! You got some right - keep practicing!</p>";
+        } else {
+          resultsHTML +=
+            "<p style='color: #e17055; font-weight: bold;'>💪 Don't give up! Try again - you'll do better next time!</p>";
+        }
+
+        resultsHTML += "</div>";
+
+        // Display results
+        document.getElementById("gameResults").innerHTML = resultsHTML;
+        gameInProgress = true;
+      }
+
+      function startNewGame() {
+        // Clear all input fields
+        for (var i = 1; i <= 5; i++) {
+          document.getElementById("guess" + i).value = "";
+        }
+
+        // Clear results display
+        document.getElementById("gameResults").innerHTML = "";
+
+        // Generate new secret numbers
+        generateSecretNumbers();
+        gameInProgress = false;
+
+        alert(
+          "🎮 New game started! I've chosen 5 new secret numbers. Good luck!"
+        );
+      }
+
+      // Initialize the page
+      document.addEventListener("DOMContentLoaded", function () {
+        console.log("Web Development Assignment page loaded successfully!");
+      });
+    </script>
+  </body>
+</html>
