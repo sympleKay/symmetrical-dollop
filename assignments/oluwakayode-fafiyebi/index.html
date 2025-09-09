@@ -233,6 +233,67 @@
         background: var(--gray-50);
       }
 
+      .students-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        background-color: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .students-table th {
+        background-color: #3498db;
+        color: white;
+        padding: 15px;
+        text-align: left;
+        font-weight: bold;
+      }
+
+      .students-table td {
+        padding: 15px;
+        border-bottom: 1px solid #ecf0f1;
+      }
+
+      .students-table tr:hover {
+        background-color: #f8f9fa;
+      }
+
+      .student-photo-cell {
+        text-align: center;
+      }
+
+      .student-photo {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #3498db, #2980b9);
+        margin: 0 auto;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+      }
+
+      .student-image {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .student-initials {
+        display: none;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+      }
+
       /* Timeline */
       .timeline {
         position: relative;
@@ -414,119 +475,146 @@
           University.
         </p>
 
-        <div class="students-grid">
-          <div class="student-card">
-            <div class="student-avatar">
-              <img
-                src="/images/students/kayode.jpg"
-                alt="Oluwakayode Fafiyebi"
-                class="student-photo"
-                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-              />
-              <span class="avatar-fallback">OF</span>
-            </div>
-            <div class="student-name">Oluwakayode Fafiyebi</div>
-            <div class="student-id">RUN/CMP/24/18200</div>
-          </div>
-
-          <div class="student-card">
-            <div class="student-avatar">
-              <img
-                src="/images/students/Temitope.jpg"
-                alt="Temitope Adebayo"
-                class="student-photo"
-                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-              />
-              <span class="avatar-fallback">TA</span>
-            </div>
-            <div class="student-name">Temitope Adebayo</div>
-            <div class="student-id">RUN/CMP/24/17876</div>
-          </div>
-
-          <div class="student-card">
-            <div class="student-avatar">
-              <img
-                src="/images/students/Taiye.jpg"
-                alt="Taiye Williams"
-                class="student-photo"
-                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-              />
-              <span class="avatar-fallback">TW</span>
-            </div>
-            <div class="student-name">Taiye Williams</div>
-            <div class="student-id">RUN/CMP/24/17876</div>
-          </div>
-
-          <div class="student-card">
-            <div class="student-avatar">
-              <img
-                src="/images/students/kehinde.jpg"
-                alt="Temitope Adebayo"
-                class="student-photo"
-                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-              />
-              <span class="avatar-fallback">KW</span>
-            </div>
-            <div class="student-name">Kehinde Williams</div>
-            <div class="student-id">RUN/CMP/24/17876</div>
-          </div>
-
-          <div class="student-card">
-            <div class="student-avatar">
-              <img
-                src="/images/students/Aishat.jpg"
-                alt="Temitope Adebayo"
-                class="student-photo"
-                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-              />
-              <span class="avatar-fallback">AA</span>
-            </div>
-            <div class="student-name">Aishat Akingbade</div>
-            <div class="student-id">RUN/CMP/24/17876</div>
-          </div>
-
-          <div class="student-card">
-            <div class="student-avatar">
-              <img
-                src="/images/students/Tayo.jpg"
-                alt="Oluwatemitayo Aladejebi"
-                class="student-photo"
-                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-              />
-              <span class="avatar-fallback">TA</span>
-            </div>
-            <div class="student-name">Oluwatemitayo Aladejebi</div>
-            <div class="student-id">RUN/CMP/24/17876</div>
-          </div>
-
-          <div class="student-card">
-            <div class="student-avatar">
-              <img
-                src="/images/students/caleb.jpg"
-                alt="Caleb"
-                class="student-photo"
-                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-              />
-              <span class="avatar-fallback">C</span>
-            </div>
-            <div class="student-name">Caleb</div>
-            <div class="student-id">RUN/CMP/24/17876</div>
-          </div>
-
-          <div class="student-card">
-            <div class="student-avatar">
-              <img
-                src="/images/students/ife.png"
-                alt="Ifeoluwa Tijesuni"
-                class="student-photo"
-                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-              />
-              <span class="avatar-fallback">IT</span>
-            </div>
-            <div class="student-name">Ifeoluwa Tijesuni</div>
-            <div class="student-id">RUN/CMP/24/17876</div>
-          </div>
-        </div>
+        <table class="students-table">
+          <thead>
+            <tr>
+              <th>Photo</th>
+              <th>Student Name</th>
+              <th>Student ID</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="student-photo-cell">
+                <div class="student-photo">
+                  <img
+                    src="/images/students/kayode.jpg"
+                    alt="Oluwakayode Fafiyebi"
+                    class="student-image"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                  />
+                  <span class="student-initials">OF</span>
+                </div>
+              </td>
+              <td><strong>Oluwakayode Fafiyebi</strong></td>
+              <td>RUN/CMP/24/18200</td>
+              <td>Active</td>
+            </tr>
+            <tr>
+              <td class="student-photo-cell">
+                <div class="student-photo">
+                  <img
+                    src="/images/students/Temitope.jpg"
+                    alt="Temitope Adebayo"
+                    class="student-image"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                  />
+                  <span class="student-initials">TA</span>
+                </div>
+              </td>
+              <td><strong>Temitope Adebayo</strong></td>
+              <td>RUN/CMP/24/17876</td>
+              <td>Active</td>
+            </tr>
+            <tr>
+              <td class="student-photo-cell">
+                <div class="student-photo">
+                  <img
+                    src="/images/students/Taiye.jpg"
+                    alt="Taiye Williams"
+                    class="student-image"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                  />
+                  <span class="student-initials">TW</span>
+                </div>
+              </td>
+              <td><strong>Taiye Williams</strong></td>
+              <td>RUN/CMP/24/17878</td>
+              <td>Active</td>
+            </tr>
+            <tr>
+              <td class="student-photo-cell">
+                <div class="student-photo">
+                  <img
+                    src="/images/students/kehinde.jpg"
+                    alt="Kehinde Williams"
+                    class="student-image"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                  />
+                  <span class="student-initials">KW</span>
+                </div>
+              </td>
+              <td><strong>Kehinde Williams</strong></td>
+              <td>RUN/CMP/24/18202</td>
+              <td>Active</td>
+            </tr>
+            <tr>
+              <td class="student-photo-cell">
+                <div class="student-photo">
+                  <img
+                    src="/images/students/Aishat.jpg"
+                    alt="Aishat Akingbade"
+                    class="student-image"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                  />
+                  <span class="student-initials">AA</span>
+                </div>
+              </td>
+              <td><strong>Aishat Akingbade</strong></td>
+              <td>RUN/CMP/24/18205</td>
+              <td>Active</td>
+            </tr>
+            <tr>
+              <td class="student-photo-cell">
+                <div class="student-photo">
+                  <img
+                    src="/images/students/Tayo.jpg"
+                    alt="Oluwatemitayo Aladejebi"
+                    class="student-image"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                  />
+                  <span class="student-initials">OA</span>
+                </div>
+              </td>
+              <td><strong>Oluwatemitayo Aladejebi</strong></td>
+              <td>RUN/CMP/24/18164</td>
+              <td>Active</td>
+            </tr>
+            <tr>
+              <td class="student-photo-cell">
+                <div class="student-photo">
+                  <img
+                    src="/images/students/caleb.jpg"
+                    alt="Opelami Caleb"
+                    class="student-image"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                  />
+                  <span class="student-initials">OC</span>
+                </div>
+              </td>
+              <td><strong>Opelami Caleb</strong></td>
+              <td>RUN/CMP/24/18174</td>
+              <td>Active</td>
+            </tr>
+            <tr>
+              <td class="student-photo-cell">
+                <div class="student-photo">
+                  <img
+                    src="/images/students/ife.png"
+                    alt="Ifeoluwa Tijesuni"
+                    class="student-image"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                  />
+                  <span class="student-initials">IT</span>
+                </div>
+              </td>
+              <td><strong>Ifeoluwa Tijesuni</strong></td>
+              <td>RUN/CMP/24/18196</td>
+              <td>Active</td>
+            </tr>
+          </tbody>
+        </table>
       </section>
 
       <!-- 2. Internet vs Web -->
